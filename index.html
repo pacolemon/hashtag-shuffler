@@ -1,0 +1,42 @@
+<div style="display:grid;gap:8px;">
+  Hashtag 
+  <textarea id="in-hashtag" rows="10">#pixelcaso #pixel #pixelart #gamedev #2dgame #pixelgame #pixelartgame #gamedeveloper #artwork #pixelated #digitalart #pixelartsociety #indieartist #2dartist #2dartwork #pixelillustration #pixel_ig #8bit #instaart #gamejam #8bitart #ドット絵 #itchio #pixelartist #pacolemon #indie #indiegame #indiegamedev #art #gamedev #indiegame #pixelcaso #pixel #pixelart #gamedev #2dgame #pixelgame #pixelartgame #gamedeveloper #artwork #pixelated #digitalart #pixelartsociety #indieartist #2dartist #2dartwork #pixelillustration #pixel_ig #8bit #instaart #gamejam #8bitart #ドット絵 #itchio #pixelartist #pacolemon #indie #indiegame #indiegamedev #art #gamedev #indiegame</textarea>
+  <div>
+    Limit <input id="in-limit" type="number" min="1" max="30" value="30"/>
+  </div>
+  <div>
+    <button class="clickable" onclick="shuffle()">Shuffler</button>
+  </div>
+  <div>
+    Output
+    <div style="display:grid;">
+      <textarea id="txt-output" rows=10></textarea>
+    </div>
+  </div>
+</div>
+
+<script> L = console.log </script>
+<script> $ = function(selector, node=document) { return node.querySelectorAll(selector) } </script>
+<script>
+  // https://stackoverflow.com/questions/2724509/shuffling-words-in-a-sentence-in-javascript-coding-horror-how-to-improve
+  Array.prototype.shuffle = function() {
+      let i = 30;
+      if (i == 0) return this;
+      while (--i) {
+          let j = Math.floor(Math.random() * (i + 1 ));
+          let a = this[i];
+          let b = this[j];
+          this[i] = b;
+          this[j] = a;
+      }
+      return this;
+  };
+  
+  function shuffle() {
+    let input = $('#in-hashtag')[0].value.trim().replace(/ +/g, ' ');
+    let limit = parseInt($('#in-limit')[0].value);
+    let output = input.split(' ').shuffle().splice(0,limit).join(' ');
+    $('#txt-output')[0].value = output;
+  }
+
+</script>
